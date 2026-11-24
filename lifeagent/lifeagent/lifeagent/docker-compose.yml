@@ -1,0 +1,15 @@
+# Only n8n runs in Docker. Backend, MCP server and frontend run on your machine so the
+# agentic browser can open a VISIBLE Chromium window during the live demo.
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    ports: ["5678:5678"]
+    environment:
+      - GENERIC_TIMEZONE=Asia/Kolkata
+      - N8N_SECURE_COOKIE=false
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./n8n/workflows:/workflows:ro
+volumes:
+  n8n_data:

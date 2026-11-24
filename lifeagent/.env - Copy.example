@@ -1,0 +1,7 @@
+ANTHROPIC_API_KEY=          # optional; empty = deterministic fallback mode (demo still works)
+LLM_MODEL=claude-sonnet-5-5
+USE_MCP=1                   # 1 = agents call tools through the MCP server (needs it running)
+MCP_URL=http://localhost:8001/mcp
+N8N_URL=http://localhost:5678
+PUBLIC_BASE=http://localhost:8000
+DEMO_HEADED=1               # 1 = show the browser agent window

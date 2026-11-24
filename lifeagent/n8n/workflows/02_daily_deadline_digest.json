@@ -1,0 +1,115 @@
+{
+  "name": "LifeAgent - Daily deadline digest",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "b1",
+      "name": "Every day 08:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://host.docker.internal:8000/api/deadlines/due?days=7",
+        "options": {}
+      },
+      "id": "b2",
+      "name": "Get due deadlines",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.first().json.items || [];\nreturn items.map(d => ({ json: { user_id: d.user_id, channel: 'n8n-digest', title: 'Deadline soon: ' + d.title, body: 'Due ' + d.due_date + '. Reply in LifeAgent if you want me to handle it.' } }));"
+      },
+      "id": "b3",
+      "name": "One item per deadline",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8000/api/notify",
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "b4",
+      "name": "Notify (LifeAgent API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Every day 08:00": {
+      "main": [
+        [
+          {
+            "node": "Get due deadlines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get due deadlines": {
+      "main": [
+        [
+          {
+            "node": "One item per deadline",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One item per deadline": {
+      "main": [
+        [
+          {
+            "node": "Notify (LifeAgent API)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

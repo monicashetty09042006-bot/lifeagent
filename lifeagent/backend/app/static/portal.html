@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Demo Government Portal</title>
+<style>body{font:16px system-ui;max-width:640px;margin:30px auto;padding:0 16px}h1{color:#1d3a8a}label{display:block;margin:10px 0 2px;font-weight:600}
+input{width:100%;padding:8px;border:1px solid #999;border-radius:6px;box-sizing:border-box}button{margin-top:16px;padding:10px 20px;background:#1d3a8a;color:#fff;border:0;border-radius:6px}
+#receipt{display:none;background:#e7f7ec;padding:16px;border-radius:8px;margin-top:20px}.banner{background:#fff3cd;padding:8px;border-radius:6px;font-size:13px}</style></head>
+<body><div class="banner">DEMO PORTAL: a local stand-in for a government site so the browser agent can be shown safely.</div>
+<h1 id="title">Application form</h1>
+<form id="f" onsubmit="return false">
+<label>Full name</label><input name="full_name"><label>Age</label><input name="age"><label>Country</label><input name="country">
+<label>Occupation</label><input name="occupation"><label>Annual income</label><input name="annual_income">
+<label>Household size</label><input name="household_size"><label>ID number</label><input name="id_number">
+<button id="submit">Submit application</button></form>
+<div id="receipt"><b>Application received.</b> Reference: <span id="ref"></span></div>
+<script>const q=new URLSearchParams(location.search);document.getElementById('title').textContent=q.get('name')||'Application form';
+document.getElementById('submit').onclick=()=>{document.getElementById('ref').textContent='LA-'+Math.floor(100000+Math.random()*900000);
+document.getElementById('receipt').style.display='block'}</script></body></html>

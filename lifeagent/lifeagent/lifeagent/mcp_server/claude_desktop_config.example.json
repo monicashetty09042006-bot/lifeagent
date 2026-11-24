@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "lifeagent": {
+      "command": "python",
+      "args": ["/ABSOLUTE/PATH/lifeagent/mcp_server/server.py"],
+      "env": { "MCP_TRANSPORT": "stdio" }
+    }
+  }
+}

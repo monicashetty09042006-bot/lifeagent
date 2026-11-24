@@ -1,0 +1,10 @@
+[
+ {"id":"in-pm-kisan","country":"IN","name":"PM-KISAN Income Support","benefit":"INR 6,000 per year","authority":"Ministry of Agriculture","url":"https://pmkisan.gov.in","deadline_days":21,"rules":{"occupations":["farmer"],"max_income":300000},"docs":["id_proof","land_record"]},
+ {"id":"in-pmjay","country":"IN","name":"Ayushman Bharat (PM-JAY) Health Cover","benefit":"Health cover up to INR 5 lakh per family","authority":"National Health Authority","url":"https://pmjay.gov.in","deadline_days":30,"rules":{"max_income":250000},"docs":["id_proof"]},
+ {"id":"in-post-matric","country":"IN","name":"Post-Matric Scholarship","benefit":"Tuition and maintenance allowance","authority":"Ministry of Education","url":"https://scholarships.gov.in","deadline_days":14,"rules":{"occupations":["student"],"max_income":250000},"docs":["id_proof","enrollment"]},
+ {"id":"us-pell","country":"US","name":"Federal Pell Grant","benefit":"Up to USD 7,395 per year (does not need repaying)","authority":"US Dept. of Education","url":"https://studentaid.gov","deadline_days":18,"rules":{"occupations":["student"],"max_income":60000},"docs":["id_proof","enrollment"]},
+ {"id":"us-snap","country":"US","name":"SNAP Food Assistance","benefit":"Monthly grocery benefit","authority":"USDA","url":"https://www.fns.usda.gov/snap","deadline_days":25,"rules":{"max_income":20000},"docs":["id_proof"]},
+ {"id":"us-eitc","country":"US","name":"Earned Income Tax Credit","benefit":"Tax refund credit for working people","authority":"IRS","url":"https://www.irs.gov/eitc","deadline_days":40,"rules":{"min_age":19,"max_income":50000},"docs":["id_proof"]},
+ {"id":"gb-pension-credit","country":"GB","name":"Pension Credit","benefit":"Top-up to weekly income plus access to other help","authority":"DWP","url":"https://www.gov.uk/pension-credit","deadline_days":20,"rules":{"min_age":66,"max_income":13000},"docs":["id_proof"]},
+ {"id":"gb-warm-home","country":"GB","name":"Warm Home Discount","benefit":"GBP 150 off winter energy bill","authority":"Ofgem / DESNZ","url":"https://www.gov.uk/the-warm-home-discount-scheme","deadline_days":12,"rules":{"max_income":16000},"docs":["id_proof"]}
+]
